@@ -1,0 +1,3 @@
+[submodule "packages/circles-client"]
+	path = packages/circles-client
+	url = https://github.com/dacarva/eth-bangkok
