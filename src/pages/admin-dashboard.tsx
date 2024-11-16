@@ -21,6 +21,7 @@ import {
 } from "@/components/ui/table";
 import { Toaster } from "@/components/ui/toaster";
 import { useToast } from "@/hooks/use-toast";
+import { useDynamicContext } from "@dynamic-labs/sdk-react-core";
 
 // Dummy data for invited users
 const invitedUsers = [
@@ -45,6 +46,8 @@ const invitedUsers = [
 ];
 
 export default function AdminDashboard() {
+  const { user } = useDynamicContext();
+  console.log("user", user);
   const [email, setEmail] = useState("");
   const { toast } = useToast();
 
