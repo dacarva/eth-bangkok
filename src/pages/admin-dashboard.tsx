@@ -29,19 +29,19 @@ const invitedUsers = [
     id: 1,
     name: "Alice Johnson",
     email: "alice@example.com",
-    address: "0x1234...5678",
+    address: "0xB9386c320616E14B217723e0298311b7754846FA",
   },
   {
     id: 2,
     name: "Bob Smith",
     email: "bob@example.com",
-    address: "0xabcd...efgh",
+    address: "0x425C59c641f1D9A24e6665fBDe726434302c4761",
   },
   {
     id: 3,
     name: "Charlie Brown",
     email: "charlie@example.com",
-    address: "0x9876...5432",
+    address: "0x7f22D19c63f6fbc8ff5298Ef432933154280C6F7",
   },
 ];
 
@@ -118,7 +118,7 @@ export default function AdminDashboard() {
                   <TableCell>{user.email}</TableCell>
                   <TableCell>
                     <a
-                      href={`https://blockscout.com/gnosis/mainnet/address/${user.address}`}
+                      href={`https://gnosis.blockscout.com/address/${user.address}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-teal-600 hover:underline"
