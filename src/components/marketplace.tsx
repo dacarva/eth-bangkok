@@ -118,16 +118,16 @@ function ProductCard({ product }) {
 export default function Component() {
   return (
     <div className="container mx-auto p-4">
-      {/* <h1 className="text-3xl font-bold mb-6 text-center">
+      <h1 className="text-3xl font-bold mb-6 text-center">
         Essential Items Marketplace
-      </h1> */}
-      <div className="mb-6">
+      </h1>
+      {/* <div className="mb-6">
         <Input
           type="search"
           placeholder="Search products..."
           className="max-w-sm mx-auto"
         />
-      </div>
+      </div> */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {products.map((product) => (
           <ProductCard key={product.id} product={product} />
