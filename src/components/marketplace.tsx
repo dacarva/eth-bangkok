@@ -1,12 +1,12 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "./ui/button";
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
+} from "./ui/card";
+import { Input } from "./ui/input";
 import { ShoppingCart } from "lucide-react";
 
 const products = [
@@ -48,7 +48,7 @@ const products = [
   },
 ];
 
-export default function Component() {
+export default function Marketplace() {
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-3xl font-bold mb-6 text-center">

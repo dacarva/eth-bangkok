@@ -4,6 +4,8 @@ import {
 } from "@dynamic-labs/sdk-react-core";
 import { EthereumWalletConnectors } from "@dynamic-labs/ethereum";
 
+import Marketplace from "./components/marketplace";
+
 const App = () => (
   <DynamicContextProvider
     settings={{
@@ -12,6 +14,7 @@ const App = () => (
     }}
   >
     <DynamicWidget />
+    <Marketplace />
   </DynamicContextProvider>
 );
 
