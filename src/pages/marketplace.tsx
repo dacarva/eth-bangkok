@@ -9,7 +9,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ShoppingCart } from "lucide-react";
 
@@ -124,9 +123,9 @@ function ProductCard({ product }: { product: Product }) {
   );
 }
 
-export default function Component() {
+export default function Marketplace() {
   return (
-    <div className="container mx-auto p-4">
+    <>
       <h1 className="text-3xl font-bold mb-6 text-center text-teal-700">
         Essential Items Marketplace
       </h1>
@@ -135,6 +134,6 @@ export default function Component() {
           <ProductCard key={product.id} product={product} />
         ))}
       </div>
-    </div>
+    </>
   );
 }
