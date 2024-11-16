@@ -13,7 +13,14 @@ const App = () => (
       walletConnectors: [EthereumWalletConnectors],
     }}
   >
-    <DynamicWidget />
+    <nav className="bg-teal-50 shadow-md">
+      <div className="container mx-auto flex justify-between items-center p-4">
+        <h1 className="text-xl font-bold text-teal-700">Social Trade</h1>
+        <div className="flex items-center">
+          <DynamicWidget />
+        </div>
+      </div>
+    </nav>
     <Marketplace />
   </DynamicContextProvider>
 );

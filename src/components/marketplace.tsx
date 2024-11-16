@@ -13,6 +13,13 @@ import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ShoppingCart } from "lucide-react";
 
+interface Product {
+  id: number;
+  name: string;
+  price: number;
+  image: string;
+}
+
 const products = [
   {
     id: 1,
@@ -72,13 +79,13 @@ const products = [
   },
 ];
 
-function ProductCard({ product }) {
+function ProductCard({ product }: { product: Product }) {
   const [imageLoaded, setImageLoaded] = useState(false);
 
   return (
-    <Card className="flex flex-col">
+    <Card className="flex flex-col hover:shadow-lg transition-shadow">
       <CardHeader>
-        <CardTitle className="text-lg">{product.name}</CardTitle>
+        <CardTitle className="text-lg text-teal-700">{product.name}</CardTitle>
       </CardHeader>
       <CardContent className="flex-grow">
         {!imageLoaded && <Skeleton className="w-full h-40 mb-4" />}
@@ -97,14 +104,16 @@ function ProductCard({ product }) {
           }}
         />
         {imageLoaded ? (
-          <p className="text-2xl font-semibold">${product.price.toFixed(2)}</p>
+          <p className="text-2xl font-semibold text-teal-700">
+            ${product.price.toFixed(2)}
+          </p>
         ) : (
           <Skeleton className="h-8 w-24" />
         )}
       </CardContent>
       <CardFooter>
         {imageLoaded ? (
-          <Button className="w-full">
+          <Button className="w-full bg-teal-600 hover:bg-teal-700">
             <ShoppingCart className="mr-2 h-4 w-4" /> Add to Cart
           </Button>
         ) : (
@@ -118,16 +127,9 @@ function ProductCard({ product }) {
 export default function Component() {
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-6 text-center">
+      <h1 className="text-3xl font-bold mb-6 text-center text-teal-700">
         Essential Items Marketplace
       </h1>
-      {/* <div className="mb-6">
-        <Input
-          type="search"
-          placeholder="Search products..."
-          className="max-w-sm mx-auto"
-        />
-      </div> */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {products.map((product) => (
           <ProductCard key={product.id} product={product} />
