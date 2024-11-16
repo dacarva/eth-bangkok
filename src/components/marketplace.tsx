@@ -13,6 +13,10 @@ import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ShoppingCart } from "lucide-react";
 import { CirclesSDKContext } from "@/context/circles";
+import { zeroAddress } from "viem";
+
+import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
+import { getWeb3Provider,getSigner, } from '@dynamic-labs/ethers-v6'
 
 interface Product {
 	id: number;
@@ -127,17 +131,56 @@ function ProductCard({ product }: { product: Product }) {
 
 export default function Component() {
 
-  const { initializeSdk, sdk } = useContext(CirclesSDKContext);
-	const test = async () => {
-		console.log("Hello");
-		console.log("🚀 ~ Component ~ circles:", sdk);
+  const { sdk, circlesAddress, circlesProvider, disconnectWallet, initializeSdk } = useContext(CirclesSDKContext);
+
+  useEffect(() => {
+    console.log("sdk", sdk);
+    console.log("circlesAddress", circlesAddress);
+    console.log("circlesProvider", circlesProvider);
+  }
+  , [sdk, circlesAddress, circlesProvider]);
+
+	const createAvatar = async () => {
+		try {
+			if (sdk) {
+				const inviterAddress = zeroAddress;
+				const avatar = await sdk.acceptInvitation(inviterAddress, {
+					name: "Coca association admin",
+				});
+				console.log(avatar.avatarInfo);
+			} else {
+				console.error("SDK is not initialized");
+			}
+		} catch (error) {
+			console.error("Error creating avatar", error);
+		}
 	};
+
+  const { primaryWallet } = useDynamicContext()
+  console.log("primaryWallet", primaryWallet);
+  const checkWallet = async () => {
+    const provider = await getWeb3Provider(primaryWallet)
+    console.log("🚀 ~ Component ~ provider:", provider)
+    const signer = await getSigner(primaryWallet)
+    console.log("🚀 ~ Component ~ signer:", signer)
+
+    window.ethereum = {
+      ...window.ethereum,
+      provider,
+      signer,
+    };    
+  }
+
+
 	return (
 		<div className="container mx-auto p-4">
 			<h1 className="text-3xl font-bold mb-6 text-center text-teal-700">
 				Essential Items Marketplace
 			</h1>
-			<button onClick={test}>Hello</button>
+      <button onClick={disconnectWallet}>Disconnect Wallet</button>
+			<button onClick={createAvatar}>Create Admin</button>
+			<button onClick={checkWallet}>Check Wallet</button>
+			<button onClick={initializeSdk}>Init</button>
 			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
 				{products.map((product) => (
 					<ProductCard key={product.id} product={product} />

@@ -56,6 +56,8 @@ export const CirclesSDKProvider = ({ children }: { children: ReactNode }) => {
 
       setCirclesProvider(provider);
       setCirclesAddress(address);
+      console.log("🚀 ~ initializeSdk ~ address:", address)
+      console.log("🚀 ~ initializeSdk ~ provider:", provider)
 
       const sdkInstance = new Sdk(newAdapter, chainConfig);
      
@@ -78,6 +80,7 @@ export const CirclesSDKProvider = ({ children }: { children: ReactNode }) => {
     
     }
   }, []);
+
 
   useEffect(() => {
     initializeSdk();
